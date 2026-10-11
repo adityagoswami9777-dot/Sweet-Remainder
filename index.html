@@ -1,0 +1,538 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff0f6">
+<title>A Little Reminder for Shreya 🌷</title>
+
+<style>
+:root {
+  --pink: #ff8fb8;
+  --deep: #cf568b;
+  --light: #fff0f6;
+  --text: #70485b;
+}
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  color: var(--text);
+  background: linear-gradient(145deg, #fffaff, #ffe5ef, #fff7fa);
+  overflow-x: hidden;
+}
+
+button, input { font: inherit; }
+button { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+
+#decor {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.floating {
+  position: absolute;
+  top: -30px;
+  color: #e989ad;
+  opacity: .55;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(300deg); }
+}
+
+.app {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 580px;
+  min-height: 100svh;
+  margin: auto;
+  padding: 26px 21px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen {
+  width: 100%;
+  text-align: center;
+  animation: appear .6s ease both;
+}
+
+.hidden { display: none !important; }
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.eyebrow {
+  color: var(--deep);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(34px, 8vw, 48px);
+  line-height: 1.2;
+  letter-spacing: -1px;
+  margin: 17px 0;
+}
+
+h2 {
+  font-size: clamp(25px, 6vw, 35px);
+  line-height: 1.4;
+  margin: 0;
+}
+
+p { font-size: 15px; line-height: 1.8; }
+.muted { color: #a27c90; }
+
+.photo-frame {
+  width: min(64vw, 235px);
+  aspect-ratio: 4 / 5;
+  padding: 7px;
+  margin: 24px auto 16px;
+  border: 2px solid #ffc1d8;
+  border-radius: 48% 48% 28px 28px;
+  background: white;
+  box-shadow: 0 12px 38px #df81a433;
+  overflow: hidden;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.placeholder {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(150deg, #fff8fb, #ffdfec);
+  border-radius: inherit;
+  color: var(--deep);
+}
+
+.flower { font-size: 53px; }
+
+.upload {
+  display: inline-block;
+  padding: 10px 17px;
+  margin-bottom: 12px;
+  background: white;
+  border: 1px solid #f2b4cd;
+  border-radius: 30px;
+  font-size: 13px;
+  color: var(--deep);
+  cursor: pointer;
+}
+
+.upload input { display: none; }
+
+button:focus-visible, .upload:focus-within {
+  outline: 3px solid var(--deep);
+  outline-offset: 4px;
+}
+
+.primary, .secondary {
+  min-height: 48px;
+  padding: 13px 23px;
+  border-radius: 40px;
+  transition: transform .2s;
+}
+
+.primary {
+  color: white;
+  font-weight: bold;
+  background: linear-gradient(100deg, #ff96bb, #df5d96);
+  box-shadow: 0 8px 22px #df669633;
+  border: 0;
+}
+
+.secondary {
+  color: var(--deep);
+  background: white;
+  border: 1px solid #f3bfd3;
+}
+
+.primary:active, .secondary:active {
+  transform: scale(.97);
+}
+
+.note { font-size: 12px; margin-top: 22px; }
+
+.progress-area { margin-bottom: 25px; }
+
+.progress-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  color: #a27c90;
+  font-size: 11px;
+  letter-spacing: .5px;
+}
+
+.track {
+  height: 5px;
+  border-radius: 10px;
+  background: #f4d4e2;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #ff9abc, #d74e8c);
+  transition: width .35s ease;
+}
+
+.message-card {
+  padding: 30px 20px;
+  border: 1px solid white;
+  border-radius: 27px;
+  background: #ffffffc9;
+  box-shadow: 0 15px 45px #d88ba51c;
+}
+
+.symbol { font-size: 43px; margin-bottom: 22px; }
+
+.message-box {
+  min-height: 145px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 23px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #edc0d2;
+}
+
+.dot.active {
+  background: var(--deep);
+  transform: scale(1.3);
+}
+
+.footer {
+  margin-top: 27px;
+  color: #b58b9e;
+  font-size: 11px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<div id="decor" aria-hidden="true"></div>
+
+<main class="app">
+
+  <!-- COVER PAGE -->
+  <section class="screen" id="cover">
+    <div class="eyebrow">A tiny gift for you 🌷</div>
+
+    <h1>Hey, Shreya <span style="color:#ed78a5">♡</span></h1>
+
+    <div class="photo-frame">
+      <div class="placeholder" id="placeholder">
+        <span class="flower">🌸</span>
+        <strong>A little space for you</strong>
+        <small>Your photo goes here</small>
+      </div>
+      <img id="photo" class="hidden" alt="Selected photo of Shreya">
+    </div>
+
+    <label class="upload">
+      ♡ Choose a photo
+      <input id="photoInput" type="file" accept="image/*">
+    </label>
+
+    <p>
+      Just a little reminder for you…
+      <br>
+      <span class="muted">because sometimes, we all need one.</span>
+    </p>
+
+    <button class="primary" id="startBtn">
+      ▶ &nbsp; A little reminder
+    </button>
+
+    <p class="note muted">Take a breath. There's no rush. ✨</p>
+  </section>
+
+  <!-- MOTIVATIONAL SLIDES -->
+  <section class="screen hidden" id="presentation">
+    <div class="progress-area">
+      <div class="progress-meta">
+        <span>A LITTLE REMINDER FOR SHREYA ♡</span>
+        <span id="counter">01 / 08</span>
+      </div>
+      <div class="track">
+        <div class="bar" id="bar"></div>
+      </div>
+    </div>
+
+    <div class="message-card" id="messageCard">
+      <div class="symbol" id="symbol">🌷</div>
+      <div class="message-box">
+        <h2 id="message" aria-live="polite"></h2>
+      </div>
+      <p class="muted" id="subtitle"></p>
+    </div>
+
+    <div class="controls">
+      <button class="secondary" id="backBtn">← Back</button>
+      <button class="primary" id="nextBtn">Next →</button>
+    </div>
+
+    <div class="dots" id="dots"></div>
+    <div class="footer">Go at your own pace, Shreya ♡</div>
+  </section>
+
+  <!-- FINAL PAGE -->
+  <section class="screen hidden" id="ending">
+    <div class="symbol" style="font-size:58px">🌙</div>
+
+    <div class="eyebrow">Before you go…</div>
+
+    <h1>Your story is still being written.</h1>
+
+    <p>
+      Take your time. Keep going.
+      <br>
+      There is still so much beautiful life ahead.
+    </p>
+
+    <div style="font-size:28px;margin:23px">🌷 ✨ 🩷</div>
+
+    <p class="muted">
+      Just a little reminder from someone who wishes you well. :)
+    </p>
+
+    <button class="primary" id="restartBtn">↻ &nbsp; Read it again</button>
+
+    <div class="footer">Be gentle with yourself, Shreya ♡</div>
+  </section>
+
+</main>
+
+<script>
+const slides = [
+  {
+    icon: "🌷",
+    text: "Hey, Shreya. Take a deep breath.",
+    sub: "You don't have to figure everything out today."
+  },
+  {
+    icon: "🦋",
+    text: "Your past doesn't have to decide your future.",
+    sub: "You are allowed to grow beyond it."
+  },
+  {
+    icon: "☁️",
+    text: "It's okay to take your time.",
+    sub: "Healing isn't a race."
+  },
+  {
+    icon: "🌈",
+    text: "A difficult chapter isn't the whole story.",
+    sub: "Better moments can still be ahead."
+  },
+  {
+    icon: "✨",
+    text: "There is so much more waiting for you.",
+    sub: "Dreams to chase, places to see, and joy you haven't met yet."
+  },
+  {
+    icon: "🩷",
+    text: "Please be gentle with yourself.",
+    sub: "You deserve the kindness you give to others."
+  },
+  {
+    icon: "🌱",
+    text: "Trust takes time, and that's okay.",
+    sub: "Let people earn your trust, one little step at a time."
+  },
+  {
+    icon: "🌻",
+    text: "One difficult day doesn't define your whole life.",
+    sub: "There's always room for new beginnings."
+  }
+];
+
+const cover = document.getElementById("cover");
+const presentation = document.getElementById("presentation");
+const ending = document.getElementById("ending");
+
+let current = 0;
+
+function showScreen(target) {
+  [cover, presentation, ending].forEach(screen => {
+    screen.classList.add("hidden");
+  });
+
+  target.classList.remove("hidden");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function renderSlide() {
+  const slide = slides[current];
+
+  document.getElementById("symbol").textContent = slide.icon;
+  document.getElementById("message").textContent = slide.text;
+  document.getElementById("subtitle").textContent = slide.sub;
+
+  document.getElementById("counter").textContent =
+    String(current + 1).padStart(2, "0") +
+    " / " +
+    String(slides.length).padStart(2, "0");
+
+  document.getElementById("bar").style.width =
+    ((current + 1) / slides.length * 100) + "%";
+
+  const backBtn = document.getElementById("backBtn");
+  backBtn.disabled = current === 0;
+  backBtn.style.opacity = current === 0 ? ".45" : "1";
+
+  document.getElementById("nextBtn").textContent =
+    current === slides.length - 1
+      ? "One last thing →"
+      : "Next →";
+
+  const dots = document.getElementById("dots");
+  dots.replaceChildren();
+
+  slides.forEach((slide, index) => {
+    const dot = document.createElement("button");
+    dot.className = "dot" + (index === current ? " active" : "");
+    dot.setAttribute("aria-label", "Go to slide " + (index + 1));
+
+    dot.addEventListener("click", () => {
+      current = index;
+      renderSlide();
+    });
+
+    dots.appendChild(dot);
+  });
+
+  const card = document.getElementById("messageCard");
+  card.style.animation = "none";
+  void card.offsetWidth;
+  card.style.animation = "appear .45s ease both";
+}
+
+document.getElementById("startBtn").addEventListener("click", () => {
+  current = 0;
+  renderSlide();
+  showScreen(presentation);
+});
+
+document.getElementById("nextBtn").addEventListener("click", () => {
+  if (current < slides.length - 1) {
+    current++;
+    renderSlide();
+  } else {
+    showScreen(ending);
+  }
+});
+
+document.getElementById("backBtn").addEventListener("click", () => {
+  if (current > 0) {
+    current--;
+    renderSlide();
+  }
+});
+
+document.getElementById("restartBtn").addEventListener("click", () => {
+  current = 0;
+  renderSlide();
+  showScreen(cover);
+});
+
+// Photo preview on this device
+document.getElementById("photoInput").addEventListener("change", event => {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  if (!file.type.startsWith("image/")) {
+    alert("Please choose a valid image.");
+    return;
+  }
+
+  if (file.size > 8 * 1024 * 1024) {
+    alert("Please choose an image smaller than 8 MB.");
+    event.target.value = "";
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = () => {
+    document.getElementById("photo").src = reader.result;
+    document.getElementById("photo").classList.remove("hidden");
+    document.getElementById("placeholder").classList.add("hidden");
+  };
+
+  reader.readAsDataURL(file);
+});
+
+// Floating flowers and hearts
+const decor = document.getElementById("decor");
+
+for (let i = 0; i < 18; i++) {
+  const flower = document.createElement("span");
+
+  flower.className = "floating";
+  flower.textContent = i % 2 === 0 ? "✿" : "♡";
+  flower.style.left = Math.random() * 100 + "%";
+  flower.style.animationDelay = -(Math.random() * 15) + "s";
+  flower.style.animationDuration = (10 + Math.random() * 12) + "s";
+  flower.style.fontSize = (13 + Math.random() * 14) + "px";
+
+  decor.appendChild(flower);
+}
+</script>
+</body>
+</html>
