@@ -5,534 +5,405 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#fff0f6">
-<title>A Little Reminder for Shreya 🌷</title>
-
+<title>A Little Surprise for Shreya 💗</title>
 <style>
 :root {
-  --pink: #ff8fb8;
-  --deep: #cf568b;
-  --light: #fff0f6;
-  --text: #70485b;
+  --pink:#e75480;
+  --deep:#c43d70;
+  --pale:#fff0f6;
+  --ink:#563044;
 }
-* { box-sizing: border-box; }
-
+* { box-sizing:border-box; }
 body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: "Trebuchet MS", Arial, sans-serif;
-  color: var(--text);
-  background: linear-gradient(145deg, #fffaff, #ffe5ef, #fff7fa);
-  overflow-x: hidden;
+  margin:0;
+  min-height:100vh;
+  font-family:system-ui,Arial,sans-serif;
+  color:var(--ink);
+  background:linear-gradient(145deg,#fff,#fff0f6,#ffe0ec);
+  overflow-x:hidden;
 }
-
-button, input { font: inherit; }
-button { cursor: pointer; -webkit-tap-highlight-color: transparent; }
-
-#decor {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
+.page {
+  width:min(100% - 28px,650px);
+  margin:auto;
+  padding:25px 0 40px;
+  position:relative;
+  z-index:1;
 }
-
-.floating {
-  position: absolute;
-  top: -30px;
-  color: #e989ad;
-  opacity: .55;
-  animation: fall linear infinite;
+.card {
+  background:rgba(255,255,255,.94);
+  border:1px solid #f5d1df;
+  border-radius:26px;
+  padding:clamp(20px,5vw,35px);
+  text-align:center;
+  box-shadow:0 15px 45px #c43d7018;
 }
-
-@keyframes fall {
-  to { transform: translateY(110vh) rotate(300deg); }
-}
-
-.app {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 580px;
-  min-height: 100svh;
-  margin: auto;
-  padding: 26px 21px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.screen {
-  width: 100%;
-  text-align: center;
-  animation: appear .6s ease both;
-}
-
-.hidden { display: none !important; }
-
-@keyframes appear {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 .eyebrow {
-  color: var(--deep);
-  font-size: 11px;
-  font-weight: bold;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+  display:inline-block;
+  background:var(--pale);
+  color:var(--deep);
+  border-radius:30px;
+  padding:8px 14px;
+  font-size:.85rem;
+  font-weight:bold;
 }
-
 h1 {
-  font-size: clamp(34px, 8vw, 48px);
-  line-height: 1.2;
-  letter-spacing: -1px;
-  margin: 17px 0;
+  font-size:clamp(2rem,8vw,3.1rem);
+  line-height:1.1;
+  margin:18px 0 12px;
 }
-
-h2 {
-  font-size: clamp(25px, 6vw, 35px);
-  line-height: 1.4;
-  margin: 0;
-}
-
-p { font-size: 15px; line-height: 1.8; }
-.muted { color: #a27c90; }
-
+h2 { font-size:clamp(1.5rem,6vw,2.1rem); }
+p { line-height:1.7; }
+.subtitle { color:#8b6478; }
 .photo-frame {
-  width: min(64vw, 235px);
-  aspect-ratio: 4 / 5;
-  padding: 7px;
-  margin: 24px auto 16px;
-  border: 2px solid #ffc1d8;
-  border-radius: 48% 48% 28px 28px;
-  background: white;
-  box-shadow: 0 12px 38px #df81a433;
-  overflow: hidden;
+  width:min(100%,260px);
+  aspect-ratio:1;
+  margin:22px auto 15px;
+  border:3px dashed #ef9ab8;
+  border-radius:25px;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  background:#fff0f6;
 }
-
 .photo-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: inherit;
+  display:none;
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
-
-.placeholder {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  background: linear-gradient(150deg, #fff8fb, #ffdfec);
-  border-radius: inherit;
-  color: var(--deep);
-}
-
-.flower { font-size: 53px; }
-
+.placeholder { padding:20px; color:var(--deep); }
+.placeholder span { display:block; font-size:3.5rem; }
 .upload {
-  display: inline-block;
-  padding: 10px 17px;
-  margin-bottom: 12px;
-  background: white;
-  border: 1px solid #f2b4cd;
-  border-radius: 30px;
-  font-size: 13px;
-  color: var(--deep);
-  cursor: pointer;
+  display:inline-block;
+  padding:12px 18px;
+  background:white;
+  color:var(--deep);
+  border:1px solid #ef9ab8;
+  border-radius:30px;
+  font-weight:bold;
+  cursor:pointer;
 }
-
-.upload input { display: none; }
-
-button:focus-visible, .upload:focus-within {
-  outline: 3px solid var(--deep);
-  outline-offset: 4px;
+#photoInput {
+  position:absolute;
+  width:1px;
+  height:1px;
+  opacity:0;
 }
-
-.primary, .secondary {
-  min-height: 48px;
-  padding: 13px 23px;
-  border-radius: 40px;
-  transition: transform .2s;
+.hint { font-size:.8rem; color:#8b6478; }
+.btn-row {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:22px;
 }
-
+button {
+  font:inherit;
+  font-weight:bold;
+  border:0;
+  border-radius:30px;
+  padding:13px 21px;
+  min-height:48px;
+  cursor:pointer;
+}
 .primary {
-  color: white;
-  font-weight: bold;
-  background: linear-gradient(100deg, #ff96bb, #df5d96);
-  box-shadow: 0 8px 22px #df669633;
-  border: 0;
+  color:white;
+  background:linear-gradient(135deg,#e75480,#d83f78);
+  box-shadow:0 7px 18px #d83f7833;
 }
-
 .secondary {
-  color: var(--deep);
-  background: white;
-  border: 1px solid #f3bfd3;
+  color:var(--deep);
+  background:#fff0f6;
+  border:1px solid #f4c0d2;
 }
-
-.primary:active, .secondary:active {
-  transform: scale(.97);
+button:disabled { opacity:.4; }
+.hidden { display:none!important; }
+.topline {
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  color:#8b6478;
+  font-size:.9rem;
 }
-
-.note { font-size: 12px; margin-top: 22px; }
-
-.progress-area { margin-bottom: 25px; }
-
-.progress-meta {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  color: #a27c90;
-  font-size: 11px;
-  letter-spacing: .5px;
-}
-
 .track {
-  height: 5px;
-  border-radius: 10px;
-  background: #f4d4e2;
-  overflow: hidden;
+  height:9px;
+  background:#ffe0ec;
+  border-radius:20px;
+  overflow:hidden;
+  margin:14px 0 27px;
 }
-
-.bar {
-  height: 100%;
-  width: 0;
-  background: linear-gradient(90deg, #ff9abc, #d74e8c);
-  transition: width .35s ease;
+.fill {
+  height:100%;
+  width:12.5%;
+  background:linear-gradient(90deg,#f59abb,#d83f78);
+  transition:width .3s;
 }
-
-.message-card {
-  padding: 30px 20px;
-  border: 1px solid white;
-  border-radius: 27px;
-  background: #ffffffc9;
-  box-shadow: 0 15px 45px #d88ba51c;
+.slide-number {
+  color:var(--deep);
+  font-size:.85rem;
+  font-weight:bold;
+  text-transform:uppercase;
+  letter-spacing:1px;
 }
-
-.symbol { font-size: 43px; margin-bottom: 22px; }
-
-.message-box {
-  min-height: 145px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.emoji { font-size:2.3rem; margin:15px; }
+.message { font-size:1.2rem; }
+.final-heart {
+  font-size:5rem;
+  animation:beat 1.5s infinite;
 }
-
-.controls {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 24px;
-}
-
-.dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 23px;
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: #edc0d2;
-}
-
-.dot.active {
-  background: var(--deep);
-  transform: scale(1.3);
-}
-
 .footer {
-  margin-top: 27px;
-  color: #b58b9e;
-  font-size: 11px;
+  text-align:center;
+  color:#a4778d;
+  font-size:.8rem;
+  margin-top:20px;
 }
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
+.heart {
+  position:fixed;
+  bottom:-40px;
+  z-index:0;
+  pointer-events:none;
+  animation:floatUp 6s linear forwards;
+}
+@keyframes floatUp {
+  0% { transform:translateY(0) rotate(0);opacity:0; }
+  15% { opacity:.7; }
+  100% { transform:translateY(-110vh) rotate(35deg);opacity:0; }
+}
+@keyframes beat {
+  50% { transform:scale(1.12); }
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation:none!important;
+    transition:none!important;
   }
 }
 </style>
 </head>
-
 <body>
-<div id="decor" aria-hidden="true"></div>
+<main class="page">
 
-<main class="app">
+<section id="welcome" class="card">
+  <span class="eyebrow">♡ A tiny reminder for you ♡</span>
+  <h1>A Little Surprise<br>for Shreya 💗</h1>
+  <p class="subtitle">
+    A little space filled with kind words, happy thoughts,
+    and reminders of how much potential you have.
+  </p>
 
-  <!-- COVER PAGE -->
-  <section class="screen" id="cover">
-    <div class="eyebrow">A tiny gift for you 🌷</div>
-
-    <h1>Hey, Shreya <span style="color:#ed78a5">♡</span></h1>
-
-    <div class="photo-frame">
-      <div class="placeholder" id="placeholder">
-        <span class="flower">🌸</span>
-        <strong>A little space for you</strong>
-        <small>Your photo goes here</small>
-      </div>
-      <img id="photo" class="hidden" alt="Selected photo of Shreya">
+  <div class="photo-frame">
+    <img id="photoPreview" alt="Your chosen photo">
+    <div id="placeholder" class="placeholder">
+      <span>♡</span>
+      <strong>Your favourite photo goes here</strong>
+      <p>Choose a photo from your phone</p>
     </div>
+  </div>
 
-    <label class="upload">
-      ♡ Choose a photo
-      <input id="photoInput" type="file" accept="image/*">
-    </label>
+  <label class="upload" for="photoInput">📷 Choose a photo</label>
+  <input id="photoInput" type="file" accept="image/*">
+  <p class="hint">
+    Your photo is previewed in this browser and is not uploaded online.
+  </p>
 
-    <p>
-      Just a little reminder for you…
-      <br>
-      <span class="muted">because sometimes, we all need one.</span>
-    </p>
-
-    <button class="primary" id="startBtn">
-      ▶ &nbsp; A little reminder
+  <div class="btn-row">
+    <button id="startBtn" class="primary">
+      Open my little surprise ✨
     </button>
+  </div>
+</section>
 
-    <p class="note muted">Take a breath. There's no rush. ✨</p>
-  </section>
+<section id="slides" class="card hidden" aria-live="polite">
+  <div class="topline">
+    <span>For Shreya 💗</span>
+    <span id="counter">1 of 8</span>
+  </div>
+  <div class="track">
+    <div id="fill" class="fill"></div>
+  </div>
+  <div id="slideNumber" class="slide-number">Little reminder 01</div>
+  <div id="emoji" class="emoji">🌷✨</div>
+  <h2 id="title"></h2>
+  <p id="message" class="message"></p>
+  <div class="btn-row">
+    <button id="prevBtn" class="secondary">← Back</button>
+    <button id="nextBtn" class="primary">Next reminder →</button>
+  </div>
+</section>
 
-  <!-- MOTIVATIONAL SLIDES -->
-  <section class="screen hidden" id="presentation">
-    <div class="progress-area">
-      <div class="progress-meta">
-        <span>A LITTLE REMINDER FOR SHREYA ♡</span>
-        <span id="counter">01 / 08</span>
-      </div>
-      <div class="track">
-        <div class="bar" id="bar"></div>
-      </div>
-    </div>
+<section id="final" class="card hidden">
+  <div class="final-heart">💗</div>
+  <span class="eyebrow">One last reminder</span>
+  <h1>Keep being you, Shreya!</h1>
+  <p class="subtitle">
+    You don't have to have everything figured out today.
+    Take things one step at a time, be kind to yourself,
+    and remember that your effort matters.
+  </p>
+  <p><strong>Cheering for you, always. 🌸</strong></p>
+  <div class="btn-row">
+    <button id="restartBtn" class="primary">Read them again ↻</button>
+    <button id="homeBtn" class="secondary">Back to welcome ♡</button>
+  </div>
+</section>
 
-    <div class="message-card" id="messageCard">
-      <div class="symbol" id="symbol">🌷</div>
-      <div class="message-box">
-        <h2 id="message" aria-live="polite"></h2>
-      </div>
-      <p class="muted" id="subtitle"></p>
-    </div>
-
-    <div class="controls">
-      <button class="secondary" id="backBtn">← Back</button>
-      <button class="primary" id="nextBtn">Next →</button>
-    </div>
-
-    <div class="dots" id="dots"></div>
-    <div class="footer">Go at your own pace, Shreya ♡</div>
-  </section>
-
-  <!-- FINAL PAGE -->
-  <section class="screen hidden" id="ending">
-    <div class="symbol" style="font-size:58px">🌙</div>
-
-    <div class="eyebrow">Before you go…</div>
-
-    <h1>Your story is still being written.</h1>
-
-    <p>
-      Take your time. Keep going.
-      <br>
-      There is still so much beautiful life ahead.
-    </p>
-
-    <div style="font-size:28px;margin:23px">🌷 ✨ 🩷</div>
-
-    <p class="muted">
-      Just a little reminder from someone who wishes you well. :)
-    </p>
-
-    <button class="primary" id="restartBtn">↻ &nbsp; Read it again</button>
-
-    <div class="footer">Be gentle with yourself, Shreya ♡</div>
-  </section>
-
+<p class="footer">Made with kindness and a little pink magic ♡</p>
 </main>
 
 <script>
-const slides = [
+const messages = [
   {
-    icon: "🌷",
-    text: "Hey, Shreya. Take a deep breath.",
-    sub: "You don't have to figure everything out today."
+    emoji:"🌷✨",
+    title:"You are growing every day",
+    text:"You don't need to have everything figured out. Every small step you take is still progress, even when nobody else can see it."
   },
   {
-    icon: "🦋",
-    text: "Your past doesn't have to decide your future.",
-    sub: "You are allowed to grow beyond it."
+    emoji:"🦋",
+    title:"Your own pace is okay",
+    text:"Your journey doesn't have to look like anyone else's. Take your time, learn as you go, and grow at your own pace."
   },
   {
-    icon: "☁️",
-    text: "It's okay to take your time.",
-    sub: "Healing isn't a race."
+    emoji:"🌸",
+    title:"Small wins count too",
+    text:"Be proud of the little things: trying again, learning something new, or getting through a difficult day. Small wins add up."
   },
   {
-    icon: "🌈",
-    text: "A difficult chapter isn't the whole story.",
-    sub: "Better moments can still be ahead."
+    emoji:"☀️",
+    title:"You deserve kind words",
+    text:"Talk to yourself like you would talk to someone you care about. You deserve patience, encouragement, and room to make mistakes."
   },
   {
-    icon: "✨",
-    text: "There is so much more waiting for you.",
-    sub: "Dreams to chase, places to see, and joy you haven't met yet."
+    emoji:"💫",
+    title:"Mistakes help you learn",
+    text:"A mistake doesn't define you. It gives you a chance to learn, adjust, and try again with a little more experience."
   },
   {
-    icon: "🩷",
-    text: "Please be gentle with yourself.",
-    sub: "You deserve the kindness you give to others."
+    emoji:"🌈",
+    title:"Rest is part of progress",
+    text:"You are allowed to pause, breathe, and take a break. You don't have to be productive every moment to be doing enough."
   },
   {
-    icon: "🌱",
-    text: "Trust takes time, and that's okay.",
-    sub: "Let people earn your trust, one little step at a time."
+    emoji:"💖",
+    title:"Your effort matters",
+    text:"Even if today feels ordinary, your effort still matters. Keep showing up for yourself, one small step at a time."
   },
   {
-    icon: "🌻",
-    text: "One difficult day doesn't define your whole life.",
-    sub: "There's always room for new beginnings."
+    emoji:"🌟",
+    title:"There is so much ahead",
+    text:"Keep your hopes alive and stay curious about what comes next. You have time to learn, change, discover, and surprise yourself."
   }
 ];
 
-const cover = document.getElementById("cover");
-const presentation = document.getElementById("presentation");
-const ending = document.getElementById("ending");
+const welcome = document.getElementById("welcome");
+const slides = document.getElementById("slides");
+const finalScreen = document.getElementById("final");
+const photoInput = document.getElementById("photoInput");
+const photoPreview = document.getElementById("photoPreview");
+const placeholder = document.getElementById("placeholder");
 
 let current = 0;
+let photoUrl = null;
 
-function showScreen(target) {
-  [cover, presentation, ending].forEach(screen => {
-    screen.classList.add("hidden");
-  });
+photoInput.addEventListener("change", function() {
+  const file = this.files && this.files[0];
+  if (!file) return;
 
-  target.classList.remove("hidden");
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  if (!file.type.startsWith("image/")) {
+    alert("Please choose an image file.");
+    this.value = "";
+    return;
+  }
+
+  if (photoUrl) URL.revokeObjectURL(photoUrl);
+  photoUrl = URL.createObjectURL(file);
+  photoPreview.src = photoUrl;
+  photoPreview.style.display = "block";
+  placeholder.style.display = "none";
+});
+
+function showScreen(name) {
+  welcome.classList.toggle("hidden", name !== "welcome");
+  slides.classList.toggle("hidden", name !== "slides");
+  finalScreen.classList.toggle("hidden", name !== "final");
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function renderSlide() {
-  const slide = slides[current];
-
-  document.getElementById("symbol").textContent = slide.icon;
-  document.getElementById("message").textContent = slide.text;
-  document.getElementById("subtitle").textContent = slide.sub;
-
+  const item = messages[current];
   document.getElementById("counter").textContent =
-    String(current + 1).padStart(2, "0") +
-    " / " +
-    String(slides.length).padStart(2, "0");
-
-  document.getElementById("bar").style.width =
-    ((current + 1) / slides.length * 100) + "%";
-
-  const backBtn = document.getElementById("backBtn");
-  backBtn.disabled = current === 0;
-  backBtn.style.opacity = current === 0 ? ".45" : "1";
-
+    (current + 1) + " of " + messages.length;
+  document.getElementById("fill").style.width =
+    ((current + 1) / messages.length * 100) + "%";
+  document.getElementById("slideNumber").textContent =
+    "Little reminder " + String(current + 1).padStart(2,"0");
+  document.getElementById("emoji").textContent = item.emoji;
+  document.getElementById("title").textContent = item.title;
+  document.getElementById("message").textContent = item.text;
+  document.getElementById("prevBtn").disabled = current === 0;
   document.getElementById("nextBtn").textContent =
-    current === slides.length - 1
-      ? "One last thing →"
-      : "Next →";
-
-  const dots = document.getElementById("dots");
-  dots.replaceChildren();
-
-  slides.forEach((slide, index) => {
-    const dot = document.createElement("button");
-    dot.className = "dot" + (index === current ? " active" : "");
-    dot.setAttribute("aria-label", "Go to slide " + (index + 1));
-
-    dot.addEventListener("click", () => {
-      current = index;
-      renderSlide();
-    });
-
-    dots.appendChild(dot);
-  });
-
-  const card = document.getElementById("messageCard");
-  card.style.animation = "none";
-  void card.offsetWidth;
-  card.style.animation = "appear .45s ease both";
+    current === messages.length - 1 ? "Finish ✨" : "Next reminder →";
 }
 
-document.getElementById("startBtn").addEventListener("click", () => {
+document.getElementById("startBtn").addEventListener("click", function() {
   current = 0;
   renderSlide();
-  showScreen(presentation);
+  showScreen("slides");
+  burstHearts();
 });
 
-document.getElementById("nextBtn").addEventListener("click", () => {
-  if (current < slides.length - 1) {
-    current++;
-    renderSlide();
-  } else {
-    showScreen(ending);
-  }
-});
-
-document.getElementById("backBtn").addEventListener("click", () => {
+document.getElementById("prevBtn").addEventListener("click", function() {
   if (current > 0) {
     current--;
     renderSlide();
   }
 });
 
-document.getElementById("restartBtn").addEventListener("click", () => {
+document.getElementById("nextBtn").addEventListener("click", function() {
+  if (current < messages.length - 1) {
+    current++;
+    renderSlide();
+    burstHearts();
+  } else {
+    showScreen("final");
+    burstHearts();
+  }
+});
+
+document.getElementById("restartBtn").addEventListener("click", function() {
   current = 0;
   renderSlide();
-  showScreen(cover);
+  showScreen("slides");
+  burstHearts();
 });
 
-// Photo preview on this device
-document.getElementById("photoInput").addEventListener("change", event => {
-  const file = event.target.files[0];
-  if (!file) return;
-
-  if (!file.type.startsWith("image/")) {
-    alert("Please choose a valid image.");
-    return;
-  }
-
-  if (file.size > 8 * 1024 * 1024) {
-    alert("Please choose an image smaller than 8 MB.");
-    event.target.value = "";
-    return;
-  }
-
-  const reader = new FileReader();
-
-  reader.onload = () => {
-    document.getElementById("photo").src = reader.result;
-    document.getElementById("photo").classList.remove("hidden");
-    document.getElementById("placeholder").classList.add("hidden");
-  };
-
-  reader.readAsDataURL(file);
+document.getElementById("homeBtn").addEventListener("click", function() {
+  showScreen("welcome");
 });
 
-// Floating flowers and hearts
-const decor = document.getElementById("decor");
-
-for (let i = 0; i < 18; i++) {
-  const flower = document.createElement("span");
-
-  flower.className = "floating";
-  flower.textContent = i % 2 === 0 ? "✿" : "♡";
-  flower.style.left = Math.random() * 100 + "%";
-  flower.style.animationDelay = -(Math.random() * 15) + "s";
-  flower.style.animationDuration = (10 + Math.random() * 12) + "s";
-  flower.style.fontSize = (13 + Math.random() * 14) + "px";
-
-  decor.appendChild(flower);
+function makeHeart() {
+  const heart = document.createElement("span");
+  heart.className = "heart";
+  heart.textContent = ["♡","♥","💗","💕","✧"][
+    Math.floor(Math.random() * 5)
+  ];
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (16 + Math.random() * 20) + "px";
+  heart.style.animationDuration = (4.5 + Math.random() * 3) + "s";
+  document.body.appendChild(heart);
+  heart.addEventListener("animationend", function() {
+    heart.remove();
+  });
 }
+
+function burstHearts() {
+  for (let i = 0; i < 9; i++) {
+    setTimeout(makeHeart, i * 110);
+  }
+}
+
+setInterval(function() {
+  if (Math.random() > .25) makeHeart();
+}, 1500);
 </script>
 </body>
 </html>
